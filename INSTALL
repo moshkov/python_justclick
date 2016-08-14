@@ -1,0 +1,8 @@
+python_justclick installation
+=============================
+
+.. code-block:: bash
+
+    $ pip install python_justclick
+
+Если используется Django, то в настройках проекта можно указать JUSTCLICK_USERNAME и JUSTCLICK_API_KEY.
