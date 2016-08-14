@@ -15,8 +15,8 @@ https://github.com/moshkov/python_justclick
 Зависимости
 -----------
 
-1. Python 2.7+
-2. requests
+- Python 2.7+
+- requests
 
 
 Установка
@@ -34,7 +34,7 @@ https://github.com/moshkov/python_justclick
 
 *Python JustClick API*
 
-Позволяет работать с API JustClick. В текущей версии реализован только добавление подписчика в группы (AddLeadToGroup).
+Позволяет работать с API JustClick. В текущей версии реализовано только добавление подписчика в группы (AddLeadToGroup).
 
 - JustClick: http://justclick.ru/
 - Описание API: http://support.justclick.ru/index.php?/Knowledgebase/List/Index/5
@@ -49,8 +49,8 @@ https://github.com/moshkov/python_justclick
 
     justClickConnection = JustClickConnection('YOU_JUSTCLICK_USERNAME', 'YOU_JUSTCLICK_API_KEY')
 
-    result = justClickConnection.add_lead_to_group(self.get_jc_groups(), user.email, {
-        "doneurl2": "https://your.site/success",
+    result = justClickConnection.add_lead_to_group(['group1', 'group2'], 'lead@email.local', {
+        "doneurl2": "https://your-site.local/success",
         "lead_name": "Vasya Pupkin",
     })
 
@@ -65,8 +65,8 @@ https://github.com/moshkov/python_justclick
 
     from python_justclick.python_justclick_django import justClickConnection
 
-    result = justClickConnection.add_lead_to_group(self.get_jc_groups(), user.email, {
-        "doneurl2": "https://your.site/success",
+    result = justClickConnection.add_lead_to_group(['group1', 'group2'], 'lead@email.local', {
+        "doneurl2": "https://your-site.local/success",
         "lead_name": "Vasya Pupkin",
     })
 
