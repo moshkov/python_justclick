@@ -34,10 +34,10 @@ https://github.com/moshkov/python_justclick
 
 *Python JustClick API*
 
-Позволяет работать с API JustClick. В текущей версии реализовано только добавление подписчика в группы (AddLeadToGroup).
+Позволяет работать с API JustClick. В текущей версии реализовано добавление подписчика в группы (AddLeadToGroup) и проверка статуса членства подписчика в группах (GetLeadGroupStatuses).
 
 - JustClick: http://justclick.ru/
-- Описание API: http://support.justclick.ru/index.php?/Knowledgebase/List/Index/5
+- Описание API: http://help.justclick.ru/archives/category/api
 
 
 Использование

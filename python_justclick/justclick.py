@@ -47,8 +47,8 @@ class JustClickConnection(object):
     def _send_request(self, url, data):
         """ Отправляет запрос с API и получает ответ
 
-        http://support.justclick.ru/index.php?/Knowledgebase/Article/View/37/5/obshhie-principy-rboty-s-api-servis-dzhstklik
-        http://support.justclick.ru/index.php?/Knowledgebase/Article/View/34/5/sttusy-otvet-api-servis-ikh-kody-i-opisnija
+        Общие принципы работы с API: http://help.justclick.ru/archives/488
+        Cтатусы ответов API, коды и описание: http://help.justclick.ru/archives/511
 
         :param url: URL на кототорый отправляем запрос
         :param data: передаваемые данные
@@ -66,7 +66,7 @@ class JustClickConnection(object):
     def add_lead_to_group(self, rids, lead_email, extra=None):
         """Добавление подписчика в группы (AddLeadToGroup)
 
-        http://support.justclick.ru/index.php?/Knowledgebase/Article/View/36/5/dobvlenie-podpischik-v-gruppy-funkcija-api-servis-addleadtogroup
+        http://help.justclick.ru/archives/668
 
         :param rids: список групп
         :param lead_email: e-mail подписчика
@@ -84,6 +84,21 @@ class JustClickConnection(object):
         if extra is not None:
             data.update(extra)
 
-        data = http_build_data(data)
+        return self._send_request(url, http_build_data(data))
 
-        return self._send_request(url, data)
+    def get_lead_group_statuses(self, lead_email):
+        """Проверка статусов членства подписчика в группах (GetLeadGroupStatuses)
+
+        http://help.justclick.ru/archives/2629
+
+        :param lead_email: e-mail подписчика
+        :return: словарь с ответом сервера
+        """
+        url = self._build_url('GetLeadGroupStatuses')
+
+        data = collections.OrderedDict()
+        data.update({
+            'email': lead_email,
+        })
+
+        return self._send_request(url, http_build_data(data))
