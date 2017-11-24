@@ -15,7 +15,7 @@ https://github.com/moshkov/python_justclick
 Зависимости
 -----------
 
-- Python 2.7+
+- Python 2.7+, 3.4+
 - requests
 
 

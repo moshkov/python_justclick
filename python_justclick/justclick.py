@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
 
-import urllib
 import hashlib
 import requests
 import collections
+
+try:
+    from urllib import urlencode
+except:
+    from urllib.parse import urlencode
 
 
 def http_build_data(data):
     dct = collections.OrderedDict()
 
-    for key, value in data.iteritems():
-        if isinstance(value, basestring):
-            dct[key] = unicode(value).encode('utf-8')
+    for key, value in data.items():
+        if isinstance(value, str):
+            dct[key] = str(value).encode('utf-8')
         elif isinstance(value, list):
             for index, v in enumerate(value):
-                dct['{0}[{1}]'.format(key, index)] = unicode(v).encode('utf-8')
+                dct['{0}[{1}]'.format(key, index)] = str(v).encode('utf-8')
 
     return dct
 
@@ -38,8 +42,8 @@ class JustClickConnection(object):
         :param data: передаваемые данные
         :return: MD5 контрольная сумма
         """
-        data_string = u"%s::%s::%s" % (urllib.urlencode(data), self._api_username, self._api_key)
-        return hashlib.md5(data_string).hexdigest()
+        data_string = u"%s::%s::%s" % (urlencode(data), self._api_username, self._api_key)
+        return hashlib.md5(data_string.encode('utf-8')).hexdigest()
 
     def _build_url(self, path):
         return "%s%s" % (self._api_url, path)
